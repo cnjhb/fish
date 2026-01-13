@@ -1,9 +1,11 @@
 if status is-interactive
-    set -x EDITOR nvim
+	set -x EDITOR nvim
 
-    set -g fish_key_bindings fish_vi_key_bindings
+	set -g fish_key_bindings fish_vi_key_bindings
 
-    bind -M insert \cf accept-autosuggestion
+	bind -M insert \cf accept-autosuggestion
+
+	set -x SHELL fish
 
 	if type -q busybox
 		for cmd in (busybox --list)
@@ -13,4 +15,8 @@ if status is-interactive
 		end
 	end
 
+	function http_proxy -a addr port
+		export http_proxy=$addr:$port
+		export https_proxy=$addr:$port
+	end
 end
