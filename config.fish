@@ -19,6 +19,7 @@ if status is-interactive
 		export http_proxy=$addr:$port
 		export https_proxy=$addr:$port
 	end
+
 	if type -q awesome-client
 		function awecom
 			argparse d/device= b/baudrate= -- $argv || return
