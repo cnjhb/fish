@@ -19,4 +19,16 @@ if status is-interactive
 		export http_proxy=$addr:$port
 		export https_proxy=$addr:$port
 	end
+	if type -q awesome-client
+		function awecom
+			argparse d/device= b/baudrate= -- $argv || return
+			if not set -q _flag_device 
+				set _flag_device /dev/ttyUSB0
+			end
+			if not set -q _flag_baudrate
+				set _flag_baudrate 115200
+			end
+			awesome-client "require'awecom'{device='$_flag_device',baudrate=$_flag_baudrate}:show_all()"
+		end
+	end
 end
